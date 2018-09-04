@@ -45,6 +45,7 @@ namespace SovaTestApp
             Ref<List<String>> resources = New<List<String>>();
 
             resources->Add(New<String>("images/owl.png"));
+            resources->Add(New<String>("sounds/hello.wav"));
 
             g->app->load(resources)
                     ->onFinish(
@@ -77,6 +78,8 @@ namespace SovaTestApp
             if (g->owlSprite->position->y + g->owlSprite->getHeight() > g->camera->height) { g->owlVelocity->y = -5; }
         });
 
+        g->helloSound = New<Sound>(New<String>("sounds/hello.wav"));
+
         g->app->onUpdate(
                 [&](float deltaFrameMs) {
                     onGameUpdate(deltaFrameMs);
@@ -84,14 +87,17 @@ namespace SovaTestApp
     }
 
     int gcCount = 0;
+    bool playedSound = false;
 
     void Controller::onGameUpdate(float deltaFrameMs)
     {
-        //move camera
-        if (g->app->keyPressed(Key::Left)) g->camera->position->x -= 2;
-        if (g->app->keyPressed(Key::Right)) g->camera->position->x += 2;
-        if (g->app->keyPressed(Key::Up)) g->camera->position->y -= 2;
-        if (g->app->keyPressed(Key::Down)) g->camera->position->y += 2;
+        if (g->app->keyPressed(Key::Space)){
+            if (!playedSound) {
+                g->helloSound->Play();
+                playedSound = true;
+            }
+        }
+        else playedSound = false;
 
         // this is the game loop
         g->world->UpdateChildren(deltaFrameMs);

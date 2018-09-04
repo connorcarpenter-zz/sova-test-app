@@ -3,7 +3,5 @@
 #
 ---
 imports:
-    oryol:
-        git:    https://github.com/floooh/oryol.git
     sova:
         git:    https://github.com/connorcarpenter/sova.git

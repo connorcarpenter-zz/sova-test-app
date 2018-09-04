@@ -19,5 +19,6 @@ namespace SovaTestApp
         Ref<Container> world = Null<Container>();
         Ref<Sprite> owlSprite = Null<Sprite>();
         Ref<Point> owlVelocity = Null<Point>();
+        Ref<Sound> helloSound = Null<Sound>();
     };
 }
