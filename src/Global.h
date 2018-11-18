@@ -7,6 +7,7 @@
 #include <Sova/References/Ref.h>
 #include <Sova/References/Refable.h>
 #include <Sova/App.h>
+#include <Sova/Audio/Sound.h>
 
 namespace SovaTestApp
 {
